@@ -11,19 +11,21 @@ async function setupDatabase(client) {
   db.on("ready", () => {
     console.log("Database is ready!");
   });
-
-  const IsDiscordLinked = async function (discordID) {
-    const [rows] = await db.execute(
-      "SELECT ID_WoW FROM `Link_WoW` WHERE ID_Discord=?;",
-      [discordID]
-    );
-    if (rows.length > 0) {
-      return rows;
-    } else {
-      return false;
-    }
-  };
+  // Exemple de requête SQL
+  // const IsDiscordLinked = async function (discordID) {
+  //   const [rows] = await db.execute(
+  //     "SELECT ID_WoW FROM `Link_WoW` WHERE ID_Discord=?;",
+  //     [discordID]
+  //   );
+  //   if (rows.length > 0) {
+  //     return rows;
+  //   } else {
+  //     return false;
+  //   }
+  // };
 
   client.IsDiscordLinked = IsDiscordLinked;
 
 }
+
+module.exports = setupDatabase;
